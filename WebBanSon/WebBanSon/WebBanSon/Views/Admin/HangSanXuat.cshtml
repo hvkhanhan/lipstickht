@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebBanSon.Models.HangSanXuat>
+
+@{
+    ViewBag.Title = "HangSanXuat";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>QUẢN LÝ HÃNG SẢN XUẤT</h2>
+
+
+
+<p>
+    @Html.ActionLink("Thêm Hãng Sản Xuất", "themhsx")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên Hãng Sản Xuất :
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNsx)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "suahsx", new { id = item.MaNsx }) |
+                @Html.ActionLink("Chi tiết", "Chitiethsx", new { id = item.MaNsx }) |
+                @Html.ActionLink("Xóa", "xoahsx", new { id = item.MaNsx })
+
+            </td>
+        </tr>
+    }
+
+</table>

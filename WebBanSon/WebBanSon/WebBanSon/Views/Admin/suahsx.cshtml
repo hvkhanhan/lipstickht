@@ -1,0 +1,47 @@
+﻿@model WebBanSon.Models.HangSanXuat
+
+@{
+    ViewBag.Title = "suahsx";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Sửa Hãng Sản Xuất</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenNsx, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="txt_TenSP" name="txt_TenSP" class="textCtrl" required="required" value="@Model.TenNsx" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiaChi, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="txt_GiaCu" name="txt_GiaCu" class="textCtrl" required="required" value="@Model.DiaChi" />
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DienThoai, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="txt_MoTa" name="txt_MoTa" class="textCtrl" required="required" value="@Model.DienThoai" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu lại" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Trở về", "Index")
+</div>

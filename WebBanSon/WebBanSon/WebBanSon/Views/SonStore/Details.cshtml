@@ -1,0 +1,48 @@
+﻿<style type="text/css">
+    #Datmua a {
+        clear: both;
+        background-color: black;
+        color: white;
+        width: 120px;
+        height: 35px;
+        display: block;
+        float: right;
+        text-align: center;
+        padding-top: 10px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        #Datmua a:hover {
+            background-color: gray;
+            color: red;
+        }
+</style>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Layoutnguoidung.cshtml";
+}
+
+<h3 style="color:#000000;width:1080px">THÔNG TIN CHI TIẾT SON</h3>
+<div>
+    <div style="width:40%;float:left;border-left:dotted 1px;border-color:red">
+        <img src="~/HinhSP/@Model.AnhBia" width="100%" />
+    </div>
+    <div style="width:60%;float:left;padding:10px">
+        <h4 style="font-weight:bold;color:red">Tên son:@Model.TenSon</h4>
+        <p style="text-align:justify; color:#000000"><span style="font-weight:bold;color:#000000">Mô Tả:</span>@Model.MoTa</p>
+        <p style="font-weight:bold;color:#ff0000">Giá Bán:<span style="color:#000000;font-size:16pt">@Model.GiaBan VNĐ</span></p>
+    </div>
+    <div>
+        <div id="Datmua">
+             <a href="@Url.Action("Themgiohang","GioHang",new { @iMaSon= @Model.MaSon,@strURL=Request.Url.ToString()})">
+               ĐẶT MUA
+             </a>
+        </div>
+    </div>
+    <div class="fb-comments" data-href="http://localhost:49198/SonStore/Details" data-numposts="5"></div>
+</div>
+
+
+
+

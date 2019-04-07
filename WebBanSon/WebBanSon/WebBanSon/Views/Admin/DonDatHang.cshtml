@@ -1,0 +1,76 @@
+﻿@using WebBanSon.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<WebBanSon.Models.DonDatHang>
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text> ... </text>
+    }
+}
+
+@{
+    ViewBag.Title = "DonDatHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h4 style="color:#000000">
+    <h2>QUẢN LÝ THÔNG TIN ĐƠN ĐẶT HÀNG</h2>
+
+    <p>
+        @Html.ActionLink("Thêm", "themddh")
+    </p>
+    <table class="table" border="1">
+        <tr>
+            <th style="width:100px"> Mã Khách Hàng </th>
+            <th style="width:250px"> Ngày Đặt Hàng </th>
+            <th style="width:250px"> Ngày Giao Hàng </th>
+            <th style="width:150px"> Thanh Toán </th>
+            <th style="width:150px"> Tình Trạng Hàng </th>
+
+            <th style="width:150px"> </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaKhachHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayDh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayGiao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DaThanhToan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TinhTrangGiaoHang)
+                </td>
+                <td>
+                   
+                    @Html.ActionLink("Xoá", "xoaddh", new { id = item.SoHd })
+                </td>
+            </tr>
+        }
+
+</h4>
+
+</table>
+@*Tạo liên kết các trang*@
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, Page => Url.Action("DonDatHang", new { Page = Page }))
+</div>
+<style>
+     .MenuTrang li {
+            display: inline;
+        }
+</style>

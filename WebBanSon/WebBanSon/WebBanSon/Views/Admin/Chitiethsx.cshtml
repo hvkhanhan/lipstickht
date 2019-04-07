@@ -1,0 +1,43 @@
+﻿@model WebBanSon.Models.HangSanXuat
+
+@{
+    ViewBag.Title = "Chitiethsx";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chitiethsx</h2>
+
+<div>
+    <h4>HangSanXuat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Hãng Sản Xuất :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNsx)
+        </dd>
+
+        <dt>
+            Địa chỉ hãng sản xuất :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            Điện thoại hãng sản xuất :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "suahsx", new { id = Model.MaNsx }) |
+    @Html.ActionLink("Trở về", "Index")
+</p>

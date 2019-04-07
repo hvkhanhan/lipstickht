@@ -1,0 +1,80 @@
+﻿@model WebBanSon.Models.Son
+
+@{
+    ViewBag.Title = "Chitietson";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2> THÔNG TIN CHI TIẾT SON</h2>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Son :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSon)
+        </dd>
+
+        <dt>
+            Giá Bán :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GiaBan) VNĐ
+        </dd>
+
+        <dt>
+            Mô tả :
+        </dt>
+
+        <dd style="width:600px; text-align:justify">
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            Ảnh Bìa :
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/HinhSP/" + Model.AnhBia)" width="50%" />
+        </dd>
+
+        <dt>
+            Ngày Cập Nhật :
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/MM/yyyy}", Model.NgayCapNhat)
+        </dd>
+
+        <dt>
+            Số Lượng Tồn :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongTon)
+        </dd>
+
+        <dt>
+            Mã Loại Son :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaLoaiSon)
+        </dd>
+
+        <dt>
+            Mã Hãng Sản Xuất :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaNsx)
+        </dd>
+
+    </dl>
+    <p>
+        @Html.ActionLink("Chỉnh sửa", "Suason", new { id = Model.MaSon }) |
+        @Html.ActionLink("Trở về", "Son")
+    </p>
+</div>

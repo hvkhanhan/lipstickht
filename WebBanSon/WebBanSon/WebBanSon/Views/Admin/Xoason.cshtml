@@ -1,0 +1,87 @@
+﻿@model WebBanSon.Models.Son
+
+@{
+    ViewBag.Title = "Xoason";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2> XÁC ĐỊNH THÔNG TIN SON CẦN XOÁ</h2>
+
+<h3>Bạn có chắc chắn muốn xoá thông tin này ?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Son :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSon)
+        </dd>
+
+        <dt>
+            Giá Bán :
+        </dt>
+        <dd>@Html.DisplayFor(model => model.GiaBan) VNĐ</dd>
+
+        <dt>
+            Mô tả :
+        </dt>
+
+        <dd style="width:600px; text-align:justify">
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            Ảnh Bìa :
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/HinhSP/" + Model.AnhBia)" width="50%" />
+        </dd>
+
+        <dt>
+            Ngày Cập Nhật :
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/MM/yyyy}", Model.NgayCapNhat)
+        </dd>
+
+        <dt>
+            Số Lượng Tồn :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongTon)
+        </dd>
+
+        <dt>
+            Mã Loại Son :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaLoaiSon)
+        </dd>
+
+        <dt>
+            Mã Nhà Sản Xuất :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaNsx)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về", "Son")
+        </div>
+    }
+</div>

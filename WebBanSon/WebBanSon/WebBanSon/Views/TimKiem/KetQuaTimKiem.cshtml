@@ -1,0 +1,63 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.IPagedList<WebBanSon.Models.Son>
+
+
+
+<h4 style="color:#000000">
+    <h2>KẾT QUẢ TÌM KIẾM</h2>
+    <div>@ViewBag.Thongbao</div>
+    <table class="table" border="1">
+        <tr>
+            <th style="width:300px"> Loại Son </th>
+            <th style="width:100px"> Hãng Sản Xuất </th>
+            <th style="width:200px"> Tên Son </th>
+            <th style="width:120px"> Giá Bán </th>
+            <th style="width:100px"> Ảnh bìa </th>
+            <th style="width:120px"> Ngày Cập Nhật </th>
+            <th style="width:100px"> SL Tồn </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoaiSon.TenLoaiSon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HangSanXuat.TenNsx)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenSon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaBan)
+                </td>
+                
+                <td>
+                    <img src="@Url.Content("~/HinhSP/"+ item.AnhBia)" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayCapNhat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuongTon)
+                </td>
+            </tr>
+        }
+</h4>
+
+</table>
+@*Tạo liên kết các trang*@
+
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+<div class="menutrang">
+    </style>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, sTukhoa = ViewBag.TuKhoa }))
+</div>
+<style>
+    .menutrang li {
+        display: inline;
+    }
+</style>

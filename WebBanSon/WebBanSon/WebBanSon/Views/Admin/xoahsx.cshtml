@@ -1,0 +1,49 @@
+﻿@model WebBanSon.Models.HangSanXuat
+
+@{
+    ViewBag.Title = "xoahsx";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>XOÁ HÃNG SẢN XUẤT</h2>
+
+<h3>Bạn có chắc chắn muốn xoá hãng sản xuất ?</h3>
+<div>
+    <h4>Hãng Sản Xuất</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNsx)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNsx)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xoá" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về", "Index")
+        </div>
+    }
+</div>
